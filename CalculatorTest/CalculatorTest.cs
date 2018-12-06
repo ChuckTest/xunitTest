@@ -1,15 +1,23 @@
 ﻿using CalculatorLibrary;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace CalculatorTest
 {
-    public class CalculatorTest
+    public class CalculatorTest : TestBase
     {
-        [Theory]
-        [InlineData(1,2)]
-        public void AddTest(int x,int y)
+        public CalculatorTest(ITestOutputHelper tempOutput) : base(tempOutput)
         {
-            Assert.Equal(3,Calculator.Add(x,y));
+
+        }
+
+        [Theory]
+        [InlineData(1, 2)]
+        public void AddTest(int x, int y)
+        {
+            var result = Calculator.Add(x, y);
+            Output.WriteLine($"{x}+{y}={result}");
+            Assert.Equal(3, result);
         }
     }
 }
