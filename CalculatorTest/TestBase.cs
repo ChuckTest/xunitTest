@@ -1,6 +1,6 @@
 ﻿using Xunit.Abstractions;
 
-namespace CalculatorTest
+namespace Test
 {
     public class TestBase
     {

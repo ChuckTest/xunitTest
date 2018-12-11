@@ -1,8 +1,8 @@
-﻿using CalculatorLibrary;
+﻿using SourceLibrary;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace CalculatorTest
+namespace Test
 {
     public class CalculatorTest : TestBase
     {
