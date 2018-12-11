@@ -14,7 +14,7 @@ namespace Test
         }
 
         [Theory]
-        [InlineData("<?xml version='1.0' ?><root><item>test</item></root>", "test.xml")]
+        [InlineData("<?xml version=\"1.0\" encoding=\"utf-8\"?><root><item>test</item></root>", "test.xml")]
         public void InnerXmlTest(string xml, string fileName)
         {
             var exePath = Application.ExecutablePath;
@@ -24,12 +24,11 @@ namespace Test
 
             var element = XElement.Parse(xml);
             var xmlPath = Path.Combine(exeFolder, fileName);
+            Output.WriteLine(xmlPath);
             element.Save(xmlPath);
-            Output.WriteLine(element.ToString());
 
             var content = XmlManager.GetXmlStringFromFile(xmlPath);
-            Output.WriteLine(content);
-
+            Assert.Equal(content, xml);
         }
     }
 }
